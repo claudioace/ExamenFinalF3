@@ -16,7 +16,7 @@ const Card = ({ name, username, id }) => {
         {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
         <h3>{name}</h3>
         <h4>{`${username},id: ${id}`}</h4>
-        <Link to={`/details/${id}`}><img 
+        <Link to={`/detail/${id}`}><img 
           src="/images/doctor.jpg"
           alt="foto"
           style={
@@ -26,8 +26,9 @@ const Card = ({ name, username, id }) => {
             }
           }
           /></Link>
+
         <button onClick={addFav} className="favButton">
-          <img src="/favicon.ico" alt="icono Favoritos" /><p>Marcar Favorito</p></button>
+          <img src="/favicon.ico" alt="icono Favoritos" /><p>Favorito</p></button>
     </div>
   );
 };

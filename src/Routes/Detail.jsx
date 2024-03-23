@@ -13,8 +13,8 @@ const Detail = () => {
   // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
   const { id } = useParams();
   const [dentistSelected, setDentistSelected] = useState({});
-  const {state, dispatch} = useGlobalStates()
-  console.log( state )
+  const {state} = useGlobalStates()
+  //console.log( state )
   
   useEffect(() => {
  
@@ -27,11 +27,14 @@ const Detail = () => {
   }, [id]);
 
   return (
-    <><Navbar/>
+    <>
+      <Navbar/>
+      <main>
       <h2>Nombre: {dentistSelected.name} </h2>
       <h3>e-mail: {dentistSelected.email}</h3>
-      <p>Teléfono: {phone}</p>
-      <p>Sitio Web: {website}</p>
+      <p>Teléfono: {dentistSelected.phone}</p>
+      <p>Sitio Web: {dentistSelected.website}</p>
+      </main>
       {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
       {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
       <Footer/>
