@@ -4,11 +4,12 @@ import Card from '../Components/Card'
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import { getDentists } from "../api/dentists";
+import { useGlobalStates } from "../Components/utils/global.context";
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Home = () => {
-
+  const {state, dispatch} = useGlobalStates()
 
   const [dentists, setDentists] = useState([]);
 
@@ -25,7 +26,7 @@ const Home = () => {
   }, []);
 
   return (
-    <main className="" >
+    <main className={state.theme} >
       <Navbar/>
           
       <h1>Home</h1>

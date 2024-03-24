@@ -4,7 +4,7 @@ import { createContext, useContext, useReducer } from "react";
 const GlobalStates = createContext();
 let initialState = {
   favs: [], 
-  themeDark: false, 
+  theme: "", 
 };
 
 //export const ContextGlobal = createContext(undefined);
@@ -14,7 +14,7 @@ const globalReducer = (state, action) => {
     case "ADD_FAVORITES":
       return { ...state, favs: [...state.favs, action.payload] };
     case "CHANGE_THEME":
-      return { ...state, themeDark: !state.themeDark };
+      return { ...state, theme: state.theme === "dark" ? "" : "dark" };
     default:
       return state;
   }
@@ -30,4 +30,5 @@ export const ContextProvider = ({ children }) => {
     </GlobalStates.Provider>
   );
 };
+
 export const useGlobalStates = () => useContext(GlobalStates);

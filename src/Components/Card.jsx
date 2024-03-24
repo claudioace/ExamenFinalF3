@@ -28,7 +28,8 @@ const Card = ({ name, username, id }) => {
           /></Link>
 
         <button onClick={addFav} className="favButton">
-          <img src="/favicon.ico" alt="icono Favoritos" /><p>Favorito</p></button>
+          ⭐
+        </button>
     </div>
   );
 };
