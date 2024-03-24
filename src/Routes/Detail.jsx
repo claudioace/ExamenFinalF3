@@ -27,7 +27,7 @@ const Detail = () => {
   }, [id]);
 
   return (
-    <>
+    <div className={state.theme}>
       <Navbar/>
       <main>
       <h2>Nombre: {dentistSelected.name} </h2>
@@ -38,7 +38,7 @@ const Detail = () => {
       {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
       {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
       <Footer/>
-    </>
+    </div>
   )
 }
 

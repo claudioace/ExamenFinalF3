@@ -120,3 +120,11 @@ tr:nth-child(even) {
 .dark > a {
   color: white;
 }
+
+.dark .favButton{
+  background-color: rgb(79, 190, 241);
+  padding: 10px;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+}
