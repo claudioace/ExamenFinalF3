@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import  {Link} from "react-router-dom";
+import { useGlobalStates } from './utils/global.context';
+import { getDentistById } from "../api/dentists";
 
 const Card = ({ name, username, id }) => {
+  const [dentistSelected, setDentistSelected] = useState({});
+  const {state, dispatch} = useGlobalStates()
 
-  const addFav = ()=>{
-    // Aqui iria la logica para agregar la Card en el localStorage
-  }
+  useEffect(() => {
+ 
+    const getData = async()=>{
+      let dentistData = await getDentistById(id);
+      setDentistSelected(dentistData);
+    }
+    getData()
+
+  }, [id]);
 
   return (
     <div className="card">
@@ -27,7 +37,7 @@ const Card = ({ name, username, id }) => {
           }
           /></Link>
 
-        <button onClick={addFav} className="favButton">
+        <button onClick={()=> dispatch( {type:"ADD_FAVORITES", payload: dentistSelected })} className="favButton">
           ⭐
         </button>
     </div>

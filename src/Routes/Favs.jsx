@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../Components/Card";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
@@ -9,6 +9,13 @@ const Favs = () => {
   const {state, dispatch} = useGlobalStates()
 
   const [dentists, setDentists] = useState([]);
+  
+  useEffect(() => {
+      let dentistsData =  state.favs
+      setDentists(dentistsData)
+    }, []
+    );
+
   return (
     <div className={state.theme}>
       <Navbar/>
@@ -16,6 +23,9 @@ const Favs = () => {
       <div className="card-grid">
         {/* este componente debe consumir los destacados del localStorage */}
         {/* Deberan renderizar una Card por cada uno de ellos */}
+        {dentists.map((dentist) => {
+        return <Card name={dentist.name} username = {dentist.username} id={dentist.id} key={dentist.id} />;
+      })}
       </div>
       <Footer/>
     </div>

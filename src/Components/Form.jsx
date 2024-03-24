@@ -28,7 +28,7 @@ const Form = () => {
 
     event.preventDefault();
     if (
-      formData.nombre.trim().length <5 ||
+      formData.nombre.trim().length <6 ||
       !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.correo)
       ) {
       

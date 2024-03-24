@@ -9,15 +9,19 @@ let initialState = {
 
 //export const ContextGlobal = createContext(undefined);
 const globalReducer = (state, action) => {
-
+//console.log(action);
+//console.log(state.favs);
   switch (action.type) {
     case "ADD_FAVORITES":
-      return { ...state, favs: [...state.favs, action.payload] };
+
+    return { ...state, favs: [...state.favs, action.payload] };
+      
     case "CHANGE_THEME":
       return { ...state, theme: state.theme === "dark" ? "" : "dark" };
     default:
       return state;
   }
+ 
 };
 export const ContextProvider = ({ children }) => {
   //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
