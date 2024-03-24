@@ -128,3 +128,10 @@ tr:nth-child(even) {
   width: 100%;
   cursor: pointer;
 }
+
+.errMsg{
+  color: red
+}
+.dark .errMsg{
+  color:yellow
+}

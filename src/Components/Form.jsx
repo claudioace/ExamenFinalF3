@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import FormCard from "./FormCard";
 
 
 const Form = () => {
@@ -10,6 +11,7 @@ const Form = () => {
   });
 
   const [error, setError] = useState(false);
+  const [showCard, setShowCard] = useState(false)
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -23,7 +25,7 @@ const Form = () => {
 
   function handleSubmit(event) {
     console.log(formData);
-    
+
     event.preventDefault();
     if (
       formData.nombre.trim().length <5 ||
@@ -34,6 +36,8 @@ const Form = () => {
       return;
     }
     setError(false);
+    setShowCard(true);
+    log("Carga de datos")
   }
 
   function handleReset() {
@@ -41,13 +45,14 @@ const Form = () => {
       nombre: "",
       correo: "",
     });
-    setError(false)
+    setError(false);
+    setShowCard(false);
   }
 
   return (
     <div>
     <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Nombre Completo: </label>
+        <label htmlFor="nombre">Nombre Completo: </label>
         <input
           type="text"
           name="nombre"
@@ -68,11 +73,16 @@ const Form = () => {
           Limpiar
         </button>
         {error && (
-          <p style={{ color: "yellow" }}>
+          <p className="errMsg">
             Por favor verifique su información nuevamente
           </p>
         )}
     </form>
+    {showCard && (
+    <FormCard
+      nombre={formData.nombre}
+    />
+    )}
     </div>
   );
 };
